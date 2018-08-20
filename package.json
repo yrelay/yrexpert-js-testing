@@ -59,10 +59,9 @@
     "babel-preset-stage-1": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
-    "webpack": "",
     "babelify": "^7.3.0",
-    "find-up": "",
-    "globby": ""
+    "find-up": "^3.0.0",
+    "globby": "^8.0.1"
   },
   "devDependencies": {},
   "scripts": {
