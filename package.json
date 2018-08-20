@@ -41,7 +41,7 @@
     "react-dom": "^0.14.8",
     "react-json-inspector": "",
     "react-toastr": "^2.9.3",
-    "reactify": "^1.1.1",
+    "react-select": "^1.0.0-rc.10",
     "react-router": "",
     "socket.io-client": "^2.0.3",
     "toastr": "^2.1.2",
@@ -62,7 +62,6 @@
     "webpack": "",
     "webpack-dev-server": "",
     "babelify": "^7.3.0",
-    "react-select": "^1.0.0-rc.10",
     "find-up": "",
     "globby": ""
   },
