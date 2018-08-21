@@ -64,7 +64,7 @@ var Banner = createReactClass({
     <Navbar.Collapse>
       <Nav bsStyle="tabs" activeKey="1" onSelect = {this.props.controller.navOptionSelected}>
         <NavDropdown eventKey="fichier" title="Fichier" id="nav-dropdown">
-          <NavDropdown eventKey="robot" title="Robot" id="nav-dropdown" horizontal>
+          <NavDropdown eventKey="robot" title="Robot" id="nav-dropdown">
             <MenuItem eventKey="robotandy">Andy</MenuItem>
             <MenuItem eventKey="beatryxrobot">Beatryx</MenuItem>
           </NavDropdown>
@@ -79,10 +79,10 @@ var Banner = createReactClass({
         <NavDropdown eventKey="navigation" title="Navigation" id="nav-dropdown">
         </NavDropdown>
         <NavDropdown eventKey="rechercher" title="Rechercher" id="nav-dropdown">
-          <NavDropdown eventKey="fichier" title="Fichier" id="nav-dropdown" horizontal>
+          <NavDropdown eventKey="fichier" title="Fichier" id="nav-dropdown">
             <MenuItem eventKey="rechercherfichier">Rechercher fichier</MenuItem>
           </NavDropdown>
-          <NavDropdown eventKey="texte" title="Texte" id="nav-dropdown" horizontal>
+          <NavDropdown eventKey="texte" title="Texte" id="nav-dropdown">
             <MenuItem eventKey="rechyrexpert-js">Module yrexpert-js</MenuItem>
             <MenuItem eventKey="rechrtnyxp">Routines YXP</MenuItem>
           </NavDropdown>
