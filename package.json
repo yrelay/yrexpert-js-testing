@@ -22,6 +22,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
+    "ewd-client": "^1.18.0",
     "ewd-document-store": "^1.18.0",
     "ewd-qoper8": "^3.16.0",
     "ewd-qoper8-express": "^3.21.3",
