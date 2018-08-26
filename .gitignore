@@ -1,6 +1,7 @@
 testing/
 unstable/
-./node_modules/
+node_modules/
+!postinstall/node_modules/
 log/
 *.log
 

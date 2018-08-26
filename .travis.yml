@@ -5,3 +5,11 @@ node_js:
   - '10'
   - '8'
   - '6'
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat > yrexpert-jsSilent.js << { "silent": true, "extras": true }; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat > yrexpert-termSilent.js << { "silent": true, "extras": true }; fi
+
+
+
+
+
