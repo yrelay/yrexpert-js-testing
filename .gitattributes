@@ -1,4 +1,4 @@
 # forcer le langauge sur JavaScript
-*.js linguist-language=JavaScript
+linguist-language=JavaScript
 
 
