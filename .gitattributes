@@ -1,4 +1,3 @@
 # forcer le langauge sur JavaScript
 *.js linguist-language=JavaScript
-static/* linguist-vendored
-
+std/type_traits linguist-language=JavaScript
