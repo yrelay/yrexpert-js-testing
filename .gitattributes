@@ -1,3 +1,6 @@
 # forcer le langauge sur JavaScript
 std/type_traits linguist-language=JavaScript
 std/cstddef linguist-language=JavaScript
+build/* linguist-vendored
+doc/* linguist-vendored
+extras/* linguist-vendored
