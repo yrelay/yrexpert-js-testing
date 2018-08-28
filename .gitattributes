@@ -4,3 +4,10 @@ std/cstddef linguist-language=JavaScript
 build/* linguist-vendored
 doc/* linguist-vendored
 extras/* linguist-vendored
+help/* linguist-vendored
+postinstall/* linguist-vendored
+www/* linguist-vendored
+
+
+
+
