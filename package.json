@@ -45,7 +45,7 @@
     "yrexpert-gtm": "^0.0.2",
     "yrexpert-rpc": "^0.0.7",
     "yrexpert-term": "^0.0.6",
-    "globby": "^8.0.1",
+    "globby": "^7.1.1",
 
     "@babel/preset-env": "^7.0.0-rc.3",
     "@babel/core": "^7.0.0-rc.3",
