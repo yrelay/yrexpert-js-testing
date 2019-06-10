@@ -50,7 +50,8 @@
     "@babel/core": "^7.0.0-rc.3",
     "@babel/preset-react": "^7.0.0-rc.3",
 
-    "babel-core": "^7.0.0-bridge.0"
+    "babel-core": "^7.0.0-bridge.0",
+    "babelify@next": ""
   },
   "devDependencies": {},
   "scripts": {
