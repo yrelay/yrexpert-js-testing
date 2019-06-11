@@ -32,7 +32,6 @@
     "ewd-xpress-react": "^1.5.0",
     "qewd-react": "^3.2.0",
     "nodem": "^0.14.2",
-
     "yrexpert-gtm": "^0.0.2",
     "yrexpert-rpc": "^0.0.7",
     "yrexpert-term": "^0.0.6",
@@ -45,7 +44,6 @@
     "react-toastr": "^3.0.0",
     "react-select": "^3.0.4",
 
-    "babelify@next": "",
     "socket.io-client": "^2.2.0",
     "toastr": "^2.1.4",
 
