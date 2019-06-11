@@ -49,11 +49,10 @@
     "yrexpert-rpc": "^0.0.7",
     "yrexpert-term": "^0.0.6",
 
-    "@babel/preset-env": "^7.0.0-rc.3",
-    "@babel/core": "^7.0.0-rc.3",
-    "@babel/preset-react": "^7.0.0-rc.3",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-react": "^7.0.0"
 
-    "babel-core": "^7.0.0-bridge.0"
   },
   "devDependencies": {},
   "scripts": {
