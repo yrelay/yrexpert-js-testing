@@ -31,6 +31,11 @@
     "ewd-xpress": "^1.35.0",
     "ewd-xpress-react": "^1.5.0",
     "qewd-react": "^3.2.0",
+    "nodem": "^0.14.2",
+
+    "yrexpert-gtm": "^0.0.2",
+    "yrexpert-rpc": "^0.0.7",
+    "yrexpert-term": "^0.0.6",
 
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -40,18 +45,13 @@
     "react-toastr": "^3.0.0",
     "react-select": "^3.0.4",
 
-    "babelify": "^10.0.0",
+    "babelify@next": "",
     "socket.io-client": "^2.2.0",
     "toastr": "^2.1.4",
 
-    "nodem": "^0.14.2",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "create-react-class": "^15.6.3",
-
-    "yrexpert-gtm": "^0.0.2",
-    "yrexpert-rpc": "^0.0.7",
-    "yrexpert-term": "^0.0.6",
 
     "@babel/core": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
