@@ -22,14 +22,15 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "ewd-client": "^1.18.0",
-    "ewd-document-store": "^1.18.0",
-    "ewd-qoper8": "^3.16.0",
-    "ewd-qoper8-express": "^3.21.3",
+    "ewd-client": "^1.20.0",
+    "ewd-document-store": "^1.24.0",
+    "ewd-qoper8": "^3.25.2",
+    "ewd-qoper8-express": "^3.25.2",
     "ewd-react-tools": "^1.0.0",
-    "ewd-session": "^2.18.1",
+    "ewd-session": "^2.19.0",
     "ewd-xpress": "^1.35.0",
-    "ewd-xpress-react": "^1.4.0",
+    "ewd-xpress-react": "^1.5.0",
+
     "nodem": "^0.9.2",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
