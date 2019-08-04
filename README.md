@@ -3,6 +3,7 @@
 [![npm package](https://nodei.co/npm/yrexpert-js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/yrexpert-js/)
 
 [![npm version][npm-image]][npm-url]
+[![npm license][license-image]][npm-url]
 [![npm downloads][downloads-image]][downloads-url]
 
 # Interface Web pour votre système expert...
@@ -60,9 +61,10 @@ Pour remonter un bug : [https://github.com/yrelay/yrexpert-js/issues](https://gi
 * yrelay Github : [https://github.com/yrelay/](https://github.com/yrelay/)
 
 [npm-image]: https://img.shields.io/npm/v/yrexpert-js.svg
+[license-image]: https://img.shields.io/npm/l/yrexpert-js.svg
 [npm-url]: https://npmjs.org/package/yrexpert-js
+
 [downloads-image]: https://img.shields.io/npm/dm/yrexpert-js.svg
 [downloads-url]: https://npmjs.org/package/yrexpert-js
-
 
 
