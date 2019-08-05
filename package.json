@@ -46,7 +46,8 @@
     "toastr": "^2.1.4",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
-    "create-react-class": "^15.6.3"
+    "create-react-class": "^15.6.3",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -55,21 +56,25 @@
   },
   "scripts": {
     "postinstall": "node postinstall/install",
-    "start": "node_modules/.bin/webpack-dev-server --progress --inline --hot"
+    "start": "node_modules/.bin/webpack-dev-server --progress --inline --hot",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "bugs": {
     "url": "https://github.com/yrelay/yrexpert-js/issues"
   },
-  "keywords": [ "expert",
-                "system",
-                "systeme",
-                "engine",
-                "inference",
-                "moteur",
-                "ai",
-                "artificial",
-                "intelligence",
-                "ai",
-                "artificielle"
-  ]
+  "keywords": [
+    "expert",
+    "system",
+    "systeme",
+    "engine",
+    "inference",
+    "moteur",
+    "ai",
+    "artificial",
+    "intelligence",
+    "ai",
+    "artificielle"
+  ],
+  "snyk": true
 }
