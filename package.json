@@ -24,7 +24,7 @@
   "dependencies": {
     "ewd-client": "^1.20.0",
     "ewd-document-store": "^1.24.0",
-    "ewd-qoper8": "^3.25.2",
+    "ewd-qoper8": "^3.16.1",
     "ewd-qoper8-express": "^3.25.2",
     "ewd-react-tools": "^1.0.0",
     "ewd-session": "^2.19.0",
