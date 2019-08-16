@@ -46,13 +46,13 @@
     "socket.io-client": "^2.2.0",
     "toastr": "^2.1.4",
     "jquery": "^3.4.1",
-    "moment": "^2.24.0"
-  },
-  "devDependencies": {
+    "moment": "^2.24.0",
+
     "@babel/core": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-env": "^7.5.5"
   },
+  "devDependencies": {},
   "scripts": {
     "postinstall": "node postinstall/install"
   },
