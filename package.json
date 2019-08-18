@@ -18,6 +18,7 @@
     "lib": "./lib/"
   },
   "main": "./lib/yrexpert-js.js",
+  "typings" : "./lib/yrexpert-js.d.ts",
   "engines": {
     "node": ">=10.0.0"
   },
@@ -56,13 +57,35 @@
   "devDependencies": {},
 
   "compilerOptions": {
-      "target": "es2017",
-      "baseUrl": "./",
-      "paths": {
-          "*" : ["src/client/@custom_types/*"]
-      }
+    "sourceMap": true,
+    "module": "es2017",
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "es7"
+    ],
+    "jsx": "preserve",
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "keyofStringsOnly": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "typeRoots" : [
+      "node_modules/@types/",
+      "./lib/yrexpert-js.d.ts"
+    ]
   },
-  "exclude": ["node_modules", "src/client/@custom_types"],
+  "include": [
+    "./src/**/*",
+    "./lib/yrexpert-js.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
 
   "scripts": {
     "postinstall": "node postinstall/install"
