@@ -9,7 +9,7 @@
 
 */
 
-declare function ewd-xpress-react(props: any): any; export = ewd-xpress-react;
+declare module 'ewd-xpress-react';
 
 
 

@@ -68,7 +68,13 @@
     "strict": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "paths": {
+        "*": [
+            "*",
+            "src/*"
+        ]
+    },
     "keyofStringsOnly": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
