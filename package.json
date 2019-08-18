@@ -19,7 +19,7 @@
   },
   "main": "./lib/yrexpert-js.js",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "dependencies": {
     "ewd-client": "^1.20.0",
@@ -54,6 +54,16 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5"
   },
   "devDependencies": {},
+
+  "compilerOptions": {
+      "target": "es2017",
+      "baseUrl": "./",
+      "paths": {
+          "*" : ["src/client/@custom_types/*"]
+      }
+  },
+  "exclude": ["node_modules", "src/client/@custom_types"],
+
   "scripts": {
     "postinstall": "node postinstall/install"
   },
