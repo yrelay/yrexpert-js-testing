@@ -81,6 +81,7 @@
     "esModuleInterop": true,
     "typeRoots" : [
       "node_modules/@types/",
+      "./@types/",
       "./lib/yrexpert-js.d.ts"
     ]
   },
