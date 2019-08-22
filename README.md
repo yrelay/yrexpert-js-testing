@@ -5,6 +5,7 @@
 [![npm version][npm-image]][npm-url]
 [![npm license][license-image]][npm-url]
 [![npm downloads][downloads-image]][downloads-url]
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # Interface Web pour votre système expert...
 
