@@ -34,7 +34,7 @@ var WorkerProcessDetailsTable = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-WorkerProcessDetailsTable')(this.props.controller, this);
     this.title = (
       <h2>Détails du processus Worker</h2>
@@ -49,7 +49,7 @@ var WorkerProcessDetailsTable = createReactClass({
 
   },
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

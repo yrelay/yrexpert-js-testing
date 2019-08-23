@@ -31,7 +31,7 @@ var SessionTableRow = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-SessionTableRow')(this.props.controller, this);
     var id = 'Session' + this.props.pid + 'StopBtn';
     this.stopTooltip = (
@@ -52,7 +52,7 @@ var SessionTableRow = createReactClass({
 
   },
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

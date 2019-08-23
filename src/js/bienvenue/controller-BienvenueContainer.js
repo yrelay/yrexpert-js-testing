@@ -9,14 +9,13 @@
 
 */
 
-module.exports = function (controller, component) {
-
-  component.onNewProps = function(newProps) {
-    component.hideContainer = (newProps.status !== 'bienvenue');
-  };
+export default function (controller, component) {
+  component.onNewProps = function (newProps) {
+    component.hideContainer = (newProps.status !== 'bienvenue')
+  }
 
   // Afficher le panneau de bienvenue lors du premier rendu après la connexion
-  component.hideContainer = false;
+  component.hideContainer = false
 
-  return controller;
+  return controller
 };

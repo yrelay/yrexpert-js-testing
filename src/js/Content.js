@@ -9,93 +9,82 @@
 
 */
 
-"use strict"
+'use strict'
 
-var React = require('react');
-var createReactClass = require('create-react-class');
+import React from 'react'
+import createReactClass from 'create-react-class'
 
 // Fichier
-var RobotAndyContainer = require('./andy/RobotAndyContainer');
-var BeatryxRobotContainer = require('./beatryx/BeatryxRobotContainer');
+import RobotAndyContainer from './andy/RobotAndyContainer'
+import BeatryxRobotContainer from './beatryx/BeatryxRobotContainer'
 
 // Editer
 
 // Navigation
 
 // Rechercher
-var RechercherFichierContainer = require('./rechercherfichier/RechercherFichierContainer');
+import RechercherFichierContainer from './rechercherfichier/RechercherFichierContainer'
 
 // Partition
-var AllerPartitionContainer = require('./allerpartition/AllerPartitionContainer');
+import AllerPartitionContainer from './allerpartition/AllerPartitionContainer'
 
 // Exécuter
-var TerminalContainer = require('./terminal/TerminalContainer');
-var OverviewContainer = require('./overview/OverviewContainer');
-var DocumentStoreContainer = require('./document/DocumentStoreContainer');
-var SessionsContainer = require('./session/SessionsContainer');
+import TerminalContainer from './terminal/TerminalContainer'
+import OverviewContainer from './overview/OverviewContainer'
+import DocumentStoreContainer from './document/DocumentStoreContainer'
+import SessionsContainer from './session/SessionsContainer'
 
 // Fenêtre
 
 // Aide
-var BienvenueContainer = require('./bienvenue/BienvenueContainer');
-var AproposContainer = require('./apropos/AproposContainer');
-
+import BienvenueContainer from './bienvenue/BienvenueContainer'
+import AproposContainer from './apropos/AproposContainer'
 
 var Content = createReactClass({
 
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       status: 'initial'
     }
   },
 
-  componentWillMount: function() {
-    this.controller = require('./controller-Content')(this.props.controller, this);
+  UNSAFE_componentWillMount: function () {
+    this.controller = require('./controller-Content')(this.props.controller, this)
   },
 
-  componentWillReceiveProps: function(newProps) {
-    this.onNewProps(newProps);
+  UNSAFE_componentWillReceiveProps: function (newProps) {
+    this.onNewProps(newProps)
   },
 
-  render: function() {
-
-    //var componentPath = this.controller.updateComponentPath(this);
+  render: function () {
+    // var componentPath = this.controller.updateComponentPath(this);
 
     if (this.status === 'initial') {
       return (
-        <div></div>
-      );
-    }
-    else {
+        <div />
+      )
+    } else {
       return (
         <div>
-          <RobotAndyContainer controller = {this.controller} status = {this.status} />
-          <BeatryxRobotContainer controller = {this.controller} status = {this.status} />
+          <RobotAndyContainer controller={this.controller} status={this.status} />
+          <BeatryxRobotContainer controller={this.controller} status={this.status} />
 
-          <RechercherFichierContainer controller = {this.controller} status = {this.status} />
+          <RechercherFichierContainer controller={this.controller} status={this.status} />
 
-          <AllerPartitionContainer controller = {this.controller} status = {this.status} />
+          <AllerPartitionContainer controller={this.controller} status={this.status} />
 
-          <TerminalContainer controller = {this.controller} status = {this.status} />
-          <OverviewContainer controller = {this.controller} status = {this.status} /> 
-          <DocumentStoreContainer controller = {this.controller} status = {this.status} />
-          <SessionsContainer controller = {this.controller} status = {this.status} />
+          <TerminalContainer controller={this.controller} status={this.status} />
+          <OverviewContainer controller={this.controller} status={this.status} />
+          <DocumentStoreContainer controller={this.controller} status={this.status} />
+          <SessionsContainer controller={this.controller} status={this.status} />
 
-          <BienvenueContainer controller = {this.controller} status = {this.status} />
-          <AproposContainer controller = {this.controller} status = {this.status} />
+          <BienvenueContainer controller={this.controller} status={this.status} />
+          <AproposContainer controller={this.controller} status={this.status} />
 
         </div>
-      );
+      )
     }
   }
-});
+})
 
-module.exports = Content;
-
-
-
-
-
-
-
-
+export default Content

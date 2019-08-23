@@ -30,7 +30,7 @@ var Spinner = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
 
     value = this.props.value;
 
@@ -55,7 +55,7 @@ var Spinner = createReactClass({
     };
   },  
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     value = newProps.value;
   },
 

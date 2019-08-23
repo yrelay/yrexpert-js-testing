@@ -32,7 +32,7 @@ var MasterProcessDetails = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-MasterProcessDetails')(this.props.controller, this);
     this.title = (
       <h2>Détails du processus maître</h2>
@@ -47,7 +47,7 @@ var MasterProcessDetails = createReactClass({
 
   },
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

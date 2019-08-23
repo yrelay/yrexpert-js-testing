@@ -31,7 +31,7 @@ var BeatryxTableRow = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-BeatryxTableRow')(this.props.controller, this);
     var id = 'Beatryx' + this.props.pid + 'StopBtn';
     this.stopTooltip = (
@@ -52,7 +52,7 @@ var BeatryxTableRow = createReactClass({
 
   },
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

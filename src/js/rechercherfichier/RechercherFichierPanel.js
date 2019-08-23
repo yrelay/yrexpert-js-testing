@@ -42,7 +42,7 @@ var RechercherFichierPanel = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-RechercherFichierPanel')(this.props.controller, this);
 
     this.title = (
@@ -50,7 +50,7 @@ var RechercherFichierPanel = createReactClass({
     );
   },
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

@@ -33,20 +33,20 @@ var OverviewPanel = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-OverviewPanel')(this.props.controller, this);
     this.title = (
       <h1>Overview {this.serverName}</h1>
     );
   },
 
-  componentWillUpdate: function() {
+  UNSAFE_componentWillUpdate: function() {
     this.title = (
       <h1>Overview {this.serverName}</h1>
     );
   },
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

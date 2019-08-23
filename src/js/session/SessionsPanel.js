@@ -37,7 +37,7 @@ var SessionsPanel = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-SessionsPanel')(this.props.controller, this);
 
     this.tooltip = (
@@ -73,7 +73,7 @@ var SessionsPanel = createReactClass({
     this.refresh();
   },
   
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

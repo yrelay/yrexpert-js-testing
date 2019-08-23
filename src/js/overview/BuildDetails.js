@@ -27,14 +27,14 @@ var BuildDetails = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-BuildDetails')(this.props.controller, this);
     this.title = (
       <h2>Détails de la construction</h2>
     );
   },
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

@@ -32,7 +32,7 @@ var DocumentStorePanel = createReactClass({
     }
   },
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
     this.controller = require('./controller-DocumentStorePanel')(this.props.controller, this);
 
     this.tooltip = (
@@ -83,7 +83,7 @@ var DocumentStorePanel = createReactClass({
     }, 100);
   },
   
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

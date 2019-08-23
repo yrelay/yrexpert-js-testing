@@ -31,7 +31,7 @@ var {
 
 var DefUtilisateurPanel = createReactClass({
 
-  componentWillMount: function() {
+  UNSAFE_componentWillMount: function() {
 
     this.controller = require('./controller-DefUtilisateurPanel')(this.props.controller, this);
 
@@ -122,7 +122,7 @@ var DefUtilisateurPanel = createReactClass({
 */  
 // ******
 
-  componentWillReceiveProps: function(newProps) {
+  UNSAFE_componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 
