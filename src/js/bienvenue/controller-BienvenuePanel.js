@@ -8,11 +8,19 @@
 !----------------------------------------------------------------------------!
 */
 
-export default function (controller, component) {
-  component.onNewProps = function (newProps) {
-  }
+module.exports = function (controller, component) {
 
-  component.expanded = true
+  component.onNewProps = function(newProps) {
+  };
 
-  return controller
+  component.expanded = true;
+
+  return controller;
 };
+
+
+
+
+
+
+

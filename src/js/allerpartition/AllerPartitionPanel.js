@@ -27,7 +27,7 @@ var {
 
 var AllerPartitionPanel = createReactClass({
 
-  UNSAFE_componentWillMount: function() {
+  componentWillMount: function() {
     this.controller = require('./controller-AllerPartitionPanel')(this.props.controller, this);
 
     this.title = (
@@ -35,7 +35,7 @@ var AllerPartitionPanel = createReactClass({
     );
   },
 
-  UNSAFE_componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

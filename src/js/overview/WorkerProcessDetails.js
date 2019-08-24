@@ -31,7 +31,7 @@ var WorkerProcessDetails = createReactClass({
     }
   },
 
-  UNSAFE_componentWillMount: function() {
+  componentWillMount: function() {
     this.controller = require('./controller-WorkerProcessDetails')(this.props.controller, this);
     var id = 'worker' + this.props.pid + 'ShutdownBtn';
     this.tooltip = (
@@ -43,7 +43,7 @@ var WorkerProcessDetails = createReactClass({
     );
   },
 
-  UNSAFE_componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

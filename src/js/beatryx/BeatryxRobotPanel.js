@@ -37,7 +37,7 @@ var BeatryxRobotPanel = createReactClass({
     }
   },
 
-  UNSAFE_componentWillMount: function() {
+  componentWillMount: function() {
     this.controller = require('./controller-BeatryxRobotPanel')(this.props.controller, this);
 
     this.tooltip = (
@@ -73,7 +73,7 @@ var BeatryxRobotPanel = createReactClass({
     this.refresh();
   },
   
-  UNSAFE_componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

@@ -31,7 +31,7 @@ var {
 
 var NouvPartitionPanel = createReactClass({
 
-  UNSAFE_componentWillMount: function() {
+  componentWillMount: function() {
 
     this.controller = require('./controller-NouvPartitionPanel')(this.props.controller, this);
 
@@ -120,7 +120,7 @@ var NouvPartitionPanel = createReactClass({
 */  
 // ******
 
-  UNSAFE_componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

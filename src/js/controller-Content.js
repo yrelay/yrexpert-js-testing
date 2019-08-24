@@ -9,12 +9,13 @@
 
 */
 
-export default function (controller, component) {
-  component.onNewProps = function (newProps) {
-    component.status = newProps.status
-  }
+module.exports = function (controller, component) {
 
-  component.status = 'initial'
+  component.onNewProps = function(newProps) {
+    component.status = newProps.status;
+  };
 
-  return controller
+  component.status = 'initial';
+
+  return controller;
 };

@@ -9,36 +9,38 @@
 
 */
 
-export default function (controller, component) {
-  component.ac = ''
-  component.vc = ''
+module.exports = function (controller, component) {
+
+  component.ac = '';
+  component.vc = '';
 
   controller.LoginRpcModal = {
-    onLoginFieldChange: function (inputObj) {
-      // console.log('onFieldChange - ' + inputObj.ref + '; ' + inputObj.value);
-      component[inputObj.ref] = inputObj.value
+    onLoginFieldChange: function(inputObj) {
+      //console.log('onFieldChange - ' + inputObj.ref + '; ' + inputObj.value);
+      component[inputObj.ref] = inputObj.value;
     }
-  }
+  };
 
-  component.handleKeyDown = function (e) {
+  component.handleKeyDown = function(e) {
     // Touche entrée pressée
     if (e.charCode === 13) {
-      component.handleLogin()
+      component.handleLogin();
     }
-  }
+  };
 
-  component.handleLogin = function () {
-    // alert("component.ac: " + JSON.stringify(component.ac));
-    // alert("component.vc: " + JSON.stringify(component.vc));
+  component.handleLogin = function() {
+
+    //alert("component.ac: " + JSON.stringify(component.ac));
+    //alert("component.vc: " + JSON.stringify(component.vc));
 
     if (component.ac === '') {
-      controller.displayError("Vous devez entrer votre code d'accès")
-      return
+      controller.displayError("Vous devez entrer votre code d'accès");
+      return;
     }
 
     if (component.vc === '') {
-      controller.displayError('Vous devez entrer votre code de vérification')
-      return
+      controller.displayError('Vous devez entrer votre code de vérification');
+      return;
     }
 
     // envoyer un message de connexion
@@ -49,8 +51,12 @@ export default function (controller, component) {
         ac: component.ac,
         vc: component.vc
       }
-    })
-  }
+    });
+  };
 
-  return controller
+  return controller;
 };
+
+
+
+

@@ -9,53 +9,58 @@
 
 */
 
-'use strict'
+"use strict"
 
-import React from 'react'
-import createReactClass from 'create-react-class'
-import ReactBootstrap from 'react-bootstrap'
-
-import BienvenuePanel from './BienvenuePanel'
+var React = require('react');
+var createReactClass = require('create-react-class');
+var ReactBootstrap = require('react-bootstrap');
 var {
   Grid,
   Row,
   Col
-} = ReactBootstrap
+} = ReactBootstrap;
+
+var BienvenuePanel = require('./BienvenuePanel');
 
 var BienvenueContainer = createReactClass({
 
-  getInitialState: function () {
+  getInitialState: function() {
     return {
       status: 'initial'
     }
   },
 
-  UNSAFE_componentWillMount: function () {
-    this.controller = require('./controller-BienvenueContainer').default(this.props.controller, this)
+  componentWillMount: function() {
+    this.controller = require('./controller-BienvenueContainer')(this.props.controller, this);
   },
 
-  UNSAFE_componentWillReceiveProps: function (newProps) {
-    this.onNewProps(newProps)
+  componentWillReceiveProps: function(newProps) {
+    this.onNewProps(newProps);
   },
 
-  render: function () {
-    // var componentPath = this.controller.updateComponentPath(this);
+  render: function() {
+
+    //var componentPath = this.controller.updateComponentPath(this);
 
     return (
       <Grid
-        fluid
-        className={this.hideContainer ? 'hidden' : ''}
+        fluid = {true}
+        className = {this.hideContainer ? 'hidden' : ''}
       >
         <Row>
           <Col md={12}>
             <BienvenuePanel
-              controller={this.controller}
+              controller = {this.controller}
             />
           </Col>
         </Row>
       </Grid>
-    )
-  }
-})
+    );
 
-export default BienvenueContainer
+  }
+});
+
+module.exports = BienvenueContainer;
+
+
+

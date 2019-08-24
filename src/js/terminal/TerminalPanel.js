@@ -33,7 +33,7 @@ var AproposPanel = createReactClass({
     }
   },
 
-  UNSAFE_componentWillMount: function() {
+  componentWillMount: function() {
     this.controller = require('./controller-TerminalPanel')(this.props.controller, this);
 
     this.title = (
@@ -41,7 +41,7 @@ var AproposPanel = createReactClass({
     );
   },
 
-  UNSAFE_componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

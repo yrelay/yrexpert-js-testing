@@ -34,7 +34,7 @@ var {
 
 var RobotAndyPanel = createReactClass({
 
-  UNSAFE_componentWillMount: function() {
+  componentWillMount: function() {
 
     this.controller = require('./controller-RobotAndyPanel')(this.props.controller, this);
 
@@ -85,7 +85,7 @@ var RobotAndyPanel = createReactClass({
     }, 1000);
     },
 
-  UNSAFE_componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps) {
     this.onNewProps(newProps);
   },
 

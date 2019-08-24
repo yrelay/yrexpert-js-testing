@@ -9,11 +9,12 @@
 
 */
 
-import { loader as reactLoader } from 'ewd-xpress-react'
+var reactLoader = require('ewd-xpress-react').loader;
 
 var params = {
   applicationName: 'yrexpert-js',
   MainPage: require('./MainPage')
-}
+};
 
-reactLoader(params)
+reactLoader(params);
+
