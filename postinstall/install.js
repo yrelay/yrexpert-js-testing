@@ -109,7 +109,7 @@ var tidyUp = function(path) {
   fs.rmdirSync(postinstallPath);
 }; 
 
-var installYrexpertJS = function(path) {
+var installEWD = function(path) {
   var installErrors = false;
   console.log('installer yrexpert-js vers ' + path);
   //if (os.type() === 'Linux') {}
@@ -236,7 +236,7 @@ if (params.silent) {
   else {
     installPath = params.installPath;
   }
-  installYrexpertJS(installPath);
+  installEWD(installPath);
   if (params.extras) {
     installExtras(installPath);
   }
@@ -262,7 +262,7 @@ console.log(' ');
 interface.question('Installer yrexpert-js vers le répertoire (' + process.cwd() + '): ', function(installPath) {
   if (installPath === '' || installPath === 'Y' || installPath === 'y') installPath = process.cwd();
   if (installPath.slice(-1) === '/') installPath = installPath.slice(0,-1);
-  installYrexpertJS(installPath);
+  installEWD(installPath);
   console.log('  ');
   console.log('Voulez-vous installer des ressources supplémentaires à partir du répertoire /extras ?');
   console.log("Si vous êtes nouveau sur yrexpert-js ou voulez créer un environnement de test, entrer Y");
