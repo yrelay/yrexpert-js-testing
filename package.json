@@ -61,6 +61,7 @@
     "parser": "babel-eslint"
   },
   "scripts": {
+    "preinstall": "echo '************ preinstall ***************'",
     "postinstall": "node postinstall/install"
   },
   "bugs": {
