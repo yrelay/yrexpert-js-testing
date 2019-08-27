@@ -47,15 +47,15 @@
     "yrexpert-rpc": "^0.0.7",
     "yrexpert-term": "^0.0.6",
 
-    "@babel/preset-env": "^7.0.0-rc.3",
-    "@babel/core": "^7.0.0-rc.3",
-    "@babel/preset-react": "^7.0.0-rc.3",
-    "babel-core": "^7.0.0-bridge.0",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+
     "babel-eslint": "^10.0.3",
     "standard": "^14.0.2",
     "eslint-plugin-html": "^6.0.0",
     "jshint": "^2.10.2"
-
 
   },
   "devDependencies": {},
