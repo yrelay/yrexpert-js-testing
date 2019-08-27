@@ -11,17 +11,16 @@
 
 'use strict'
 
-var React = require('react')
-var createReactClass = require('create-react-class')
-var ReactBootstrap = require('react-bootstrap')
-var {
+import React from 'react'
+import createReactClass from 'create-react-class'
+import {
   Button,
   Navbar
-} = ReactBootstrap
+} from 'react-bootstrap'
 
-var location
+var controller
 
-module.exports = createReactClass({
+export default createReactClass({
 
   startMonitor: function () {
     location.reload()
@@ -39,7 +38,7 @@ module.exports = createReactClass({
           bsStyle='success'
           onClick={this.startMonitor}
         >
-          Redémarrer
+          Restart Monitor
         </Button>
       </div>
     )
