@@ -41,7 +41,7 @@ module.exports = function (controller, component) {
     if (typeof is === 'string') {
       return index(obj, is.split('.'), value)
     } else if (is.length === 1 && value !== undefined) {
-      return obj[is[0]] = value
+      return (obj[is[0]] = value)
     } else if (is.length === 0) {
       return obj
     } else {
