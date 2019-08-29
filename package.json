@@ -64,13 +64,8 @@
       "parser": "babel-eslint"
   },
   "scripts": {
-    "pretinstall": "sh script/preinstall.sh",
-    "postinstall": "sh script/postinstall.sh",
-    "test": "sh script/test.sh",
-    "start": "sh script/start.sh",
-    "restart": "sh script/restart.sh",
-    "stop": "sh script/stop.sh",
-    "uninstall": "sh script/uninstall.sh"
+    "postinstall": "node postinstall/install",
+    "start": "node_modules/.bin/webpack-dev-server --progress --inline --hot"
   },
   "bugs": {
     "url": "https://github.com/yrelay/yrexpert-js/issues"
