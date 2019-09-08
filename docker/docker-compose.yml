@@ -2,7 +2,7 @@
 version: "3.7"
 services:
 
-  yrelay/yrexpert-js:
+  yrexpert-js:
     build: .
     ports:
       - "2280:8080" # yrexpert-js
