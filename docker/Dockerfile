@@ -14,6 +14,7 @@
 #
 # Construire:
 # $ docker build -t yrelay/yrexpert-js:latest .
+# $ docker-compose build
 #
 # Utilisation avec la persistance des données:
 # $ docker run --rm -e ydb_chset=utf-8 -v `pwd`/ydb-data:/data -ti yrelay/yrexpert-js:latest
