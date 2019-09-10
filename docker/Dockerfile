@@ -23,7 +23,7 @@
 # $ docker run --entrypoint "/bin/bash" -ti yrelay/yrexpert-js:latest
 
 # Étape 1: construire yrelay/yrexpert-js depuis l'image YottaDB
-FROM yottadb/yottadb:latest
+FROM debian
 
 # Mise à jour de l'image YottaDB
 ARG DEBIAN_FRONTEND=noninteractive
@@ -50,18 +50,18 @@ RUN \
 # $ ssh -p 2222 yrelay@xxx.xxx.xxx.xxx // mot de passe : yrelay
 # $ ssh -p 2222 yrelayprog@xxx.xxx.xxx.xxx // mot de passe : prog
 # $ ssh -p 2222 yrelayutil@xxx.xxx.xxx.xxx // mot de passe : util
-
+#
 # ENV NOTVISIBLE "dans le profil de l'utilisateur"
-
 # RUN \
 #   echo "export VISIBLE=now" >> /etc/profile \
 
-#   apt-get update && apt-get install -y openssh-server \
-#   mkdir /var/run/sshd \
-#   echo 'root:root' | chpasswd \
-#   sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
-#   # Correctif de connexion. Sinon, l'utilisateur est lancé après la connexion \
-#   sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN \
+  apt-get update && apt-get install -y openssh-server \
+  mkdir /var/run/sshd \
+  echo 'root:root' | chpasswd \
+  sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
+  # Correctif de connexion. Sinon, l'utilisateur est lancé après la connexion \
+  sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
-# EXPOSE 22
-#CMD ["/usr/sbin/sshd", "-D"]
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
