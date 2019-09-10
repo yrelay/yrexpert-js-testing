@@ -30,7 +30,6 @@ RUN \
   apt-get update && apt-get upgrade -y \
   && apt-get install -y libc6 nano sudo git locales \
   && locale-gen fr_FR.UTF-8 \
-  && update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8 \
   && dpkg-reconfigure locales \
   && apt-get clean
 
