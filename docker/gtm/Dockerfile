@@ -14,23 +14,23 @@
 #
 # Construire:
 # $ docker build -t yrelay/yrexpert-js:latest .
-# $ docker-compose build
 #
 # Utilisation avec la persistance des données:
 # $ docker run --rm -e ydb_chset=utf-8 -v `pwd`/ydb-data:/data -ti yrelay/yrexpert-js:latest
 #
-# Accès au bach:
+# Accès à l'invite au bash :
 # $ docker run --entrypoint "/bin/bash" -ti yrelay/yrexpert-js:latest
 
 # Étape 1: construire yrelay/yrexpert-js depuis l'image YottaDB
 FROM debian:buster
 
-# Mise à jour de l'image YottaDB
+# Mise à jour de l'image debian
 ARG DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update && apt-get upgrade -y \
   && apt-get install -y libc6 nano sudo git locales \
   && locale-gen fr_FR.UTF-8 \
+  && update-locale LC_ALL=fr_FR.UTF-8 LANG=fr_FR.UTF-8 \
   && dpkg-reconfigure locales \
   && apt-get clean
 
