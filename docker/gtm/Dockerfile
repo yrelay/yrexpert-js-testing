@@ -29,9 +29,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update && apt-get upgrade -y \
   && apt-get install -y libc6 nano sudo git locales \
-  && locale-gen fr_FR.UTF-8 \
-  && dpkg-reconfigure locales \
   && apt-get clean
+
+# Regler LOCALE sur UTF8
+RUN echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen fr_FR.UTF-8 && \
+    dpkg-reconfigure locales && \
+    /usr/sbin/update-locale LANG=fr_FR.UTF-8
+ENV LC_ALL fr_FR.UTF-8
 
 # Installer la l'instance d'YRexpert - par défaut : yrelay
 RUN \
@@ -54,13 +59,20 @@ RUN \
 # RUN \
 #   echo "export VISIBLE=now" >> /etc/profile \
 #
-# RUN \
-#   apt-get update && apt-get install -y openssh-server \
-#   mkdir /var/run/sshd \
-#   echo 'root:root' | chpasswd \
-#   sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
-#   # Correctif de connexion. Sinon, l'utilisateur est lancé après la connexion \
-#   sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN \
+  apt-get update && apt-get install -y openssh-server \
+  mkdir /var/run/sshd \
+  sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
+  # Correctif de connexion. Sinon, l'utilisateur est lancé après la connexion \
+  sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+RUN echo 'root:root' | chpasswd
 
-# EXPOSE 22
-# CMD ["/usr/sbin/sshd", "-D"]
+EXPOSE 22
+
+ENTRYPOINT \
+  service ssh restart \
+  service yrelayyexpert restart \
+  service yrelayyexpert-js restart \
+  && bash
+
+CMD ["/usr/sbin/sshd", "-D"]
