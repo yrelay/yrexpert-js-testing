@@ -33,9 +33,9 @@ RUN \
 
 # Regler LOCALE sur UTF8
 RUN \
-  && echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen \
+  echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen fr_FR.UTF-8 \
-  &&  dpkg-reconfigure locales \
+  && dpkg-reconfigure locales \
   && /usr/sbin/update-locale LANG=fr_FR.UTF-8
 ENV LC_ALL fr_FR.UTF-8
 
