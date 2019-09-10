@@ -23,13 +23,13 @@
 # $ docker run --entrypoint "/bin/bash" -ti yrelay/yrexpert-js:latest
 
 # Étape 1: construire yrelay/yrexpert-js depuis l'image YottaDB
-FROM debian
+FROM debian:buster
 
 # Mise à jour de l'image YottaDB
 ARG DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update && apt-get upgrade -y \
-  && apt-get install -y libc6 nano sudo git \
+  && apt-get install -y libc6 nano sudo git locales \
   && locale-gen fr_FR.UTF-8 \
   && dpkg-reconfigure locales \
   && apt-get clean
@@ -54,7 +54,7 @@ RUN \
 # ENV NOTVISIBLE "dans le profil de l'utilisateur"
 # RUN \
 #   echo "export VISIBLE=now" >> /etc/profile \
-
+#
 RUN \
   apt-get update && apt-get install -y openssh-server \
   mkdir /var/run/sshd \
