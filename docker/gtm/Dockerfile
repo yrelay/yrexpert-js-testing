@@ -67,12 +67,13 @@ RUN \
   && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 # Correctif de connexion. Sinon, l'utilisateur est lancé après la connexion
 
-EXPOSE 22
+EXPOSE \
+  "2280:8080" # yrexpert-js \
+  "2281:8081" # yrexpert-term \
+  "2282:8082" # yrexpert-rpc \
+  "2283:8083" # Libre pour test \
+  "2222:22"   # Accès SSH à yrelay
 
-ENTRYPOINT \
-  service ssh restart \
-  && service yrelayyexpert restart \
-  && service yrelayyexpert-js restart \
-  && bash
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["/usr/sbin/sshd", "-D"]

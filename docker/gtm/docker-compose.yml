@@ -4,7 +4,6 @@ services:
 
   yrexpert-js:
     build: .
-    entrypoint: ./docker-entrypoint.sh
     ports:
       - "2280:8080" # yrexpert-js
       - "2281:8081" # yrexpert-term

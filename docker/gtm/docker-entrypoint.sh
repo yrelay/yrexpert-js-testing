@@ -7,3 +7,7 @@
 #!----------------------------------------------------------------------------!
 # docker-entrypoint.sh
 
+service ssh restart
+service yrelayyrexpert restart
+service yrelayyrexpert-js restart
+bash
