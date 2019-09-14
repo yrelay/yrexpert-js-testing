@@ -19,10 +19,12 @@
 # $ docker run --rm -e ydb_chset=utf-8 -v `pwd`/ydb-data:/data -ti yrelay/yrexpert-js:latest
 #
 # Accès à l'invite au bash :
-# $ docker run --entrypoint "/bin/bash" -ti yrelay/yrexpert-js:latest
+# $ docker run --entrypoint "/bin/bash" -it yrelay/yrexpert-js:latest
 
 # Étape 1: construire yrelay/yrexpert-js depuis l'image YottaDB
+ARG INSTANCE='yrelay'
 FROM debian:buster
+LABEL "about"="L'interface Web pour votre système expert..."
 
 # Mise à jour de l'image debian
 ARG DEBIAN_FRONTEND=noninteractive
@@ -67,13 +69,21 @@ RUN \
   && sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 # Correctif de connexion. Sinon, l'utilisateur est lancé après la connexion
 
-EXPOSE \
-  "2280:8080" # yrexpert-js \
-  "2281:8081" # yrexpert-term \
-  "2282:8082" # yrexpert-rpc \
-  "2283:8083" # Libre pour test \
-  "2222:22"   # Accès SSH à yrelay
+# Pour accéder à votre instance - par défaut : yrelay :
+# Pour accéder à votre instance - par défaut : yrelay :
+# EXPOSE \
+#   "2280:8080" # yrexpert-js \
+#   "2281:8081" # yrexpert-term \
+#   "2282:8082" # yrexpert-rpc \
+#   "2283:8083" # Libre pour test \
+#   "2222:22"   # Accès SSH à yrelay
+# /home/yrelay/scripts
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+
+EXPOSE 22/tcp 8080-8083/tcp
+
+# TODO $instance
+COPY ./docker-entrypoint.sh /home/yrelay/scripts/docker-entrypoint.sh
+ENTRYPOINT ["/home/yrelay/scripts/docker-entrypoint.sh"]
 
 CMD ["/usr/sbin/sshd", "-D"]
