@@ -8,50 +8,119 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # Interface Web pour votre système expert...
-
 Cette arborescence fournit une interface Web et les outils que vous aurez besoin pour votre système expert. Elle est maintenue par [https://www.yrelay.fr/](https://www.yrelay.fr/) et diffusée sous licence libre. Cette version comprend des contributions communautaires libres acceptées par [https://www.yrelay.fr/](https://www.yrelay.fr/).
 
 Disclaimer : YRexpert est encore en développement et son interface peut changer dans les futures versions. Utilisez cette production à vos propres risques.
 
 Ce dépot est fortement inspiré de l'application [EWD.js](http://www.mgateway.com/) de Rob Tweed (Merci).
 
+
+## Chargement et exécution du conteneur **yrexpert-js-srv**
+1) Installer Docker (sauf si déjà installé) :
+````shell
+$ curl -sSL https://get.docker.com | sh
+````
+Pour éviter d'utiliser *sudo* lors de l'exécution des commandes *docker* :
+````shell
+$ sudo usermod -aG docker ${USER}
+$ su - ${USER}
+````
+
+**Note :** Il vous sera demandé de saisir votre mot de passe Linux
+
+2) Charger le conteneur :
+````shell
+$ docker pull yrelay/yrexpert-js-srv
+````
+
+3) Créer un réseau Docker (sauf si déjà créé) :
+````shell
+$ docker network create yrelay-net
+````
+
+Confirmer qu'il a été créé en répertoriant vos réseaux Docker :
+````shell
+$ docker network ls
+````
+
+Vous devriez voir yrelay-net inclus dans la liste en tant que réseau *bridged*
+
+3) Exécuter le conteneur
+````shell
+$ docker run -it --rm --name yrexpert-js-srv --net yrexpert-net -e DB_IP=yrexpert-js-db -e DB_PORT=5432 -e DB_USER=yrelay -e DB_PW=DMO -p 2222:22 -p 2280:8080 -p 2281:8081 yrelay/yrexpert-js-srv
+````
+
+**Notes :**
+- la valeur de la variable d'environnement DB_IP doit correspondre au nom que vous avez spécifié dans la commande *docker run* qui a démarré le conteneur de base de données *yrexpert-db*.
+- les valeurs DB_PORT, DB_USER et DB_PW doivent rester telles que spécifiées ci-dessus.
+
+- modifiez le port du port d'écoute externe selon vos besoins. Dans l'exemple ci-dessus, vous écouterez sur les port 2222, 2280 et 2281.
+Les ports d'écoute internes **DOIVENT** être 22, 8080 et 8081.
+
+Laisser au serveur *yrexpert-js-srv* quelques secondes pour démarrer. Il devrait alors être connecté au conteneur *yrexpert-js-db et être prêt à être utilisé.
+
 ## 1. Contributions communautaires libres dans ce dépôt
-
 ### 1.1. NVM - Node.js Version Manager
-
 [NVM](https://github.com/creationix/nvm) permet d'installer et gérer différentes versions de Node.js et la liaison des versions locales dans des répertoires spécifiques.
 
 ### 1.2. Node.js - plateforme serveur en JavaScript
-
 [Node.js](https://nodejs.org/) est une plateforme logicielle libre et événementielle en JavaScript orientée vers les applications réseau qui doivent pouvoir monter en charge. Elle utilise la machine virtuelle V8 et implémente sous licence MIT les spécifications CommonJS. Node.js contient une bibliothèque de serveur HTTP intégrée, ce qui rend possible de faire tourner un serveur web sans avoir besoin d'un logiciel externe comme Apache ou Lighttpd, et permettant de mieux contrôler la façon dont le serveur web fonctionne.
 
 ### 1.3. GT.M - Base de données & compilateur MUMPS sous GNU/Linux
-
 [GT.M](https://sourceforge.net/projects/fis-gtm/) est une base de donnée robuste ; Cette plate forme d’application de traitement transactionnel se compose d’un moteur de base de données optimisé pour des sorties élevées et d’un compilateur pour le langage de programmation M (MUMPS). GT.M est un logiciel libre open-source qui fonctionne sous x86/Linux.
 
 ### 1.4. EWD.js - Applications serveur/conteneur pour une utilisation avec les bases de données Caché, GlobalsDB, GT.M and MongoDB databases
-
 [EWD.js](http://www.mgateway.com/) est un framework basé [Node.js](https://nodejs.org/), il fait parti d'une longue liste dont les plus connus sont [Express](http://expressjs.com/) and [Meteor.js](https://www.meteor.com/).  Voir [ici](http://nodeframework.com/#mvc) une liste assez complète des frameworks basés sur Nodes.js.
 
 ### 1.5. NodeM - Module Node.js de liaison pour le langage et base de données GT.M
-
 [ModeM](https://github.com/dlwicksell/nodem) est un module open source add-on pour Node.js. Ce module Node.js permet via l'interface C Call-in, la communication en Javascript avec la base de données GT.M. Depuis le module Node.js, vous pouvez effectuer les opérations de manipulation de base de la base de données et invoquer également les fonctions mumps de GT.M. 
 
 ### 1.6. Axiom - Ensemble d'outils de développement
-
 [Axiom](https://github.com/dlwicksell/axiom) est un ensemble d'outils de développement pour l'édition des routines mumps de GT.M dans l'environnement Vim.
 
-## 2. Comment tester yrexpert-js ?
+### 1.7. Docker
+[Docker](https://docs.docker.com/) est un logiciel libre permettant facilement de lancer des applications dans des conteneurs logiciels.
+
+Si vous êtes sur un système Linux type Debian, vous pouvez taper :
+
+````shell
+$ sudo apt-get install docker.io containerd.io
+````
+
+Si Docker n'est pas dans les dépôts de votre sources.list : voir les instructions sur https://wiki.debian.org/Docker.
+
+Sinon, VirtualBox peut être téléchargé à partir https://docs.docker.com/install/. L'installation est simple et vous pouvez prendre les valeurs par défaut durant le processus d'installation.
+
+**Nota :** par défaut, Docker utilisara /var/docker pour installer les contenurs et les images. Poour ne pas saturer votre répertoire /var vous pouvez déplacer de réperoire.
+
+Avant d'installer Docker, vous devez préparer le répertoire d'accueil de vos images et vos contenurs : 
+````shell
+# Si vous n'avez installé Docker, exécuter la procédure suivante sans les lignes (*) :
+
+# (*) - Retirez l'ensemble des conteneurs et images Docker.
+$ docker rm -f $(docker ps -aq); docker rmi -f $(docker images -q)
+
+# (*) - Arrêtez le service Docker.
+$ systemctl stop docker
+
+# (*) - Retirez le répertoire de stockage Docker.
+$ rm -rf /var/lib/docker
+
+# Créez un nouveau répertoire de stockage /var/lib/docker.
+$ mkdir /var/lib/docker
+
+# Utilisez le montage d'association pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur /mnt/docker, exécutez les commandes suivantes :
+$ mkdir /mnt/docker
+$ mount --rbind /mnt/docker /var/lib/docker
+
+# (*) - Démarrez le service Docker.
+$ systemctl start docker
+````
+
+## 2. Pour tester, vous pouvez aussi utiliser les box Vagrant
 Pour tester yrexpert-js, vous pouvez installer [yrexpert-box](https://github.com/yrelay/yrexpert-box).
 
-### 2.1 Utilser les contenurs Docker
-#### 2.1.1 Utilser les conteneurs Docker
-
-
-
-
 ## 3. Comment contribuer ?
-
 * Dupliquer le dépôt (utiliser Fork)
 * Créer un nouvelle branche (git checkout -b ma-branche)
 * Commit(er) votre proposition d'évolution (git commit -am 'Ajouter mon évolution')
@@ -61,7 +130,6 @@ Pour tester yrexpert-js, vous pouvez installer [yrexpert-box](https://github.com
 Pour remonter un bug : [https://github.com/yrelay/yrexpert-js/issues](https://github.com/yrelay/yrexpert-js/issues)
 
 ## 4. Liens
-
 * yrelay Page d'accueil : [https://www.yrelay.fr/](https://www.yrelay.fr/)
 * yrelay Référentiels : [https://code.yrelay.fr/](https://code.yrelay.fr/)
 * yrelay Github : [https://github.com/yrelay/](https://github.com/yrelay/)
@@ -72,5 +140,3 @@ Pour remonter un bug : [https://github.com/yrelay/yrexpert-js/issues](https://gi
 
 [downloads-image]: https://img.shields.io/npm/dm/yrexpert-js.svg
 [downloads-url]: https://npmjs.org/package/yrexpert-js
-
-
