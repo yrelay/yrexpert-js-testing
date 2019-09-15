@@ -14,8 +14,8 @@ Cette arborescence fournit une interface Web et les outils que vous aurez besoin
 
 Ce dépot est fortement inspiré de l'application [EWD.js](http://www.mgateway.com/) de Rob Tweed (Merci).
 
-## Construire et exécuter le conteneur **yrexpert-js-srv**
-0) Préparer le répertoire d'accueil de vos images et vos contenurs Docker (facultatif)
+## 1. Construire le conteneur **yrexpert-js-srv**
+1) Préparer le répertoire d'accueil de vos images et vos contenurs Docker (facultatif)
 
 Par défaut, Docker utilisara */var/lib/docker* pour installer les conteneurs et les images. Pour ne pas saturer votre répertoire */var* vous pouvez déplacer ce réperoire.
 
@@ -25,7 +25,7 @@ $ sudo mkdir /opt/docker
 $ sudo ln -s /opt/docker /var/lib/docker
 ````
 
-1) Installer Docker (sauf si déjà installé)
+2) Installer Docker (sauf si déjà installé)
 ````shell
 $ curl -sSL https://get.docker.com | sh
 ````
@@ -37,7 +37,7 @@ $ su - ${USER}
 
 **Note :** Il vous sera demandé de saisir votre mot de passe Linux
 
-2) Construire le conteneur
+3) Construire le conteneur
 ````shell
 $ mkdir /tmp/yrelay
 $ cd /tmp/yrelay
@@ -46,7 +46,7 @@ $ cd /tmp/yrelay/yrexpert-js/docker/gtm
 $ docker build -t yrelay/yrexpert-js-srv:latest .
 $ cd ~ && rm -rf /tmp/yrelay
 ````
-3) Créer un réseau Docker (sauf si déjà créé)
+4) Créer un réseau Docker (sauf si déjà créé)
 ````shell
 $ docker network create yrexpert-js-net
 ````
@@ -58,7 +58,7 @@ $ docker network ls
 
 Vous devriez voir *yrexpert-js-net* inclus dans la liste en tant que réseau *bridged*.
 
-3) Exécuter le conteneur
+5) Exécuter le conteneur
 ````shell
 $ docker run --rm --name yrexpert-js-srv --net yrexpert-js-net -p 50022:22 -p 50080-50083:8080-8083/tcp -it yrelay/yrexpert-js-srv
 ````
@@ -75,7 +75,11 @@ $ docker run --rm --name yrexpert-js-srv --net yrexpert-js-net -p 50022:22 -p 50
 
 Laisser au serveur *yrexpert-js-srv* quelques secondes pour démarrer.
 
-## Accès en mode terminal
+**********************
+
+## 2. Exécuter le conteneur **yrexpert-js-srv**
+
+### 2.1. Accès en mode terminal
 Pour vous connecter en tant qu'utilisateur utilisant l'instance *yrelay* (par défaut):
 ````shell
 $ ssh -p 50022 yrelayutil@localhost # mode de passe = util
@@ -95,35 +99,35 @@ Pour sortir du mode programmeur :
 YXP> HALT
 ````
 
-## Accès en mode WEB
+### 2.2. Accès en mode WEB
 Pour accéder à l'administration du serveur *yrexpert-js-srv* tapez dans l'URL de votre navigateur le lien suivant : http://localhost:50080/yrexpert/index.html
 
-## 1. Contributions communautaires libres dans ce dépôt
-### 1.1. NVM - Node.js Version Manager
+## 3. Contributions communautaires libres dans ce dépôt
+### 3.1. NVM - Node.js Version Manager
 [NVM](https://github.com/creationix/nvm) permet d'installer et gérer différentes versions de Node.js et la liaison des versions locales dans des répertoires spécifiques.
 
-### 1.2. Node.js - plateforme serveur en JavaScript
+### 3.2. Node.js - plateforme serveur en JavaScript
 [Node.js](https://nodejs.org/) est une plateforme logicielle libre et événementielle en JavaScript orientée vers les applications réseau qui doivent pouvoir monter en charge. Elle utilise la machine virtuelle V8 et implémente sous licence MIT les spécifications CommonJS. Node.js contient une bibliothèque de serveur HTTP intégrée, ce qui rend possible de faire tourner un serveur web sans avoir besoin d'un logiciel externe comme Apache ou Lighttpd, et permettant de mieux contrôler la façon dont le serveur web fonctionne.
 
-### 1.3. GT.M - Base de données & compilateur MUMPS sous GNU/Linux
+### 3.3. GT.M - Base de données & compilateur MUMPS sous GNU/Linux
 [GT.M](https://sourceforge.net/projects/fis-gtm/) est une base de donnée robuste ; Cette plate forme d’application de traitement transactionnel se compose d’un moteur de base de données optimisé pour des sorties élevées et d’un compilateur pour le langage de programmation M (MUMPS). GT.M est un logiciel libre open-source qui fonctionne sous x86/Linux.
 
-### 1.4. EWD.js - Applications serveur/conteneur pour une utilisation avec les bases de données Caché, GlobalsDB, GT.M and MongoDB databases
+### 3.4. EWD.js - Applications serveur/conteneur pour une utilisation avec les bases de données Caché, GlobalsDB, GT.M and MongoDB databases
 [EWD.js](http://www.mgateway.com/) est un framework basé [Node.js](https://nodejs.org/), il fait parti d'une longue liste dont les plus connus sont [Express](http://expressjs.com/) and [Meteor.js](https://www.meteor.com/).  Voir [ici](http://nodeframework.com/#mvc) une liste assez complète des frameworks basés sur Nodes.js.
 
-### 1.5. NodeM - Module Node.js de liaison pour le langage et base de données GT.M
+### 3.5. NodeM - Module Node.js de liaison pour le langage et base de données GT.M
 [ModeM](https://github.com/dlwicksell/nodem) est un module open source add-on pour Node.js. Ce module Node.js permet via l'interface C Call-in, la communication en Javascript avec la base de données GT.M. Depuis le module Node.js, vous pouvez effectuer les opérations de manipulation de base de la base de données et invoquer également les fonctions mumps de GT.M. 
 
-### 1.6. Axiom - Ensemble d'outils de développement
+### 3.6. Axiom - Ensemble d'outils de développement
 [Axiom](https://github.com/dlwicksell/axiom) est un ensemble d'outils de développement pour l'édition des routines mumps de GT.M dans l'environnement Vim.
 
-### 1.7. Docker - Pour lancer des applications dans des conteneurs logiciels
+### 3.7. Docker - Pour lancer des applications dans des conteneurs logiciels
 [Docker](https://docs.docker.com/) est un logiciel libre permettant facilement de lancer des applications dans des conteneurs logiciels.
 
-## 2. Pour tester, vous pouvez aussi utiliser les box Vagrant
+## 4. Pour tester, vous pouvez aussi utiliser les box Vagrant
 Pour tester yrexpert-js, vous pouvez installer [yrexpert-box](https://github.com/yrelay/yrexpert-box).
 
-## 3. Comment contribuer ?
+## 5. Comment contribuer ?
 * Dupliquer le dépôt (utiliser Fork)
 * Créer un nouvelle branche (git checkout -b ma-branche)
 * Commit(er) votre proposition d'évolution (git commit -am 'Ajouter mon évolution')
@@ -132,7 +136,7 @@ Pour tester yrexpert-js, vous pouvez installer [yrexpert-box](https://github.com
 
 Pour remonter un bug : [https://github.com/yrelay/yrexpert-js/issues](https://github.com/yrelay/yrexpert-js/issues)
 
-## 4. Liens
+## 6. Liens
 * yrelay Page d'accueil : [https://www.yrelay.fr/](https://www.yrelay.fr/)
 * yrelay Référentiels : [https://code.yrelay.fr/](https://code.yrelay.fr/)
 * yrelay Github : [https://github.com/yrelay/](https://github.com/yrelay/)
