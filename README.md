@@ -17,11 +17,13 @@ Ce dépot est fortement inspiré de l'application [EWD.js](http://www.mgateway.c
 ## Construire et exécuter le conteneur **yrexpert-js-srv**
 0) Préparer le répertoire d'accueil de vos images et vos contenurs Docker (facultatif)
 
-Par défaut, Docker utilisara */var/docker* pour installer les conteneurs et les images. Pour ne pas saturer votre répertoire */var* vous pouvez déplacer de réperoire.
+Par défaut, Docker utilisara */var/lib/docker* pour installer les conteneurs et les images. Pour ne pas saturer votre répertoire */var* vous pouvez déplacer ce réperoire.
 
-A faire avant d'installer Docker. Créer le répertoire de stockage */var/lib/docker* :
+*A faire avant d'installer Docker.*
+Utilisez un lien symbolique pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur */opt/docker*, exécutez les commandes suivantes :
 ````shell
-~$ mkdir /var/lib/docker
+$ sudo mkdir /opt/docker
+$ sudo ln -s /opt/docker /var/lib/docker
 ````
 
 Utilisez le montage d'association pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur */opt/docker*, exécutez les commandes suivantes :
@@ -29,6 +31,10 @@ Utilisez le montage d'association pour définir le nouvel emplacement. Par exemp
 ~$ mkdir /opt/docker
 ~$ mount --rbind /mnt/docker /var/lib/docker
 ````
+
+mkdir /var/lib/docker
+sudo ln -s /opt/docker /var/lib/docker
+
 
 1) Installer Docker (sauf si déjà installé)
 ````shell
