@@ -19,59 +19,48 @@ Ce dépot est fortement inspiré de l'application [EWD.js](http://www.mgateway.c
 
 Par défaut, Docker utilisara */var/lib/docker* pour installer les conteneurs et les images. Pour ne pas saturer votre répertoire */var* vous pouvez déplacer ce réperoire.
 
-*A faire avant d'installer Docker.*
-Utilisez un lien symbolique pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur */opt/docker*, exécutez les commandes suivantes :
+*A faire avant d'installer Docker.* Utilisez un lien symbolique pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur */opt/docker*, exécutez les commandes suivantes :
 ````shell
 $ sudo mkdir /opt/docker
 $ sudo ln -s /opt/docker /var/lib/docker
 ````
 
-Utilisez le montage d'association pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur */opt/docker*, exécutez les commandes suivantes :
-````shell
-~$ mkdir /opt/docker
-~$ mount --rbind /mnt/docker /var/lib/docker
-````
-
-mkdir /var/lib/docker
-sudo ln -s /opt/docker /var/lib/docker
-
-
 1) Installer Docker (sauf si déjà installé)
 ````shell
-~$ curl -sSL https://get.docker.com | sh
+$ curl -sSL https://get.docker.com | sh
 ````
 Pour éviter d'utiliser *sudo* lors de l'exécution des commandes *docker* :
 ````shell
-~$ sudo usermod -aG docker ${USER}
-~$ su - ${USER}
+$ sudo usermod -aG docker ${USER}
+$ su - ${USER}
 ````
 
 **Note :** Il vous sera demandé de saisir votre mot de passe Linux
 
 2) Construire le conteneur
 ````shell
-~$ mkdir /tmp/yrelay
-/tmp/yrelay$ cd /tmp/yrelay
-/tmp/yrelay$ git clone https://github.com/yrelay/yrexpert-js.git
-/tmp/yrelay$ cd /tmp/yrelay/yrexpert-js/docker/gtm
-/tmp/yrelay/yrexpert-js/docker/gtm$ docker build -t yrelay/yrexpert-js-srv:latest .
-/tmp/yrelay/yrexpert-js/docker/gtm$ cd ~ && rm -rf /tmp/yrelay
+$ mkdir /tmp/yrelay
+$ cd /tmp/yrelay
+$ git clone https://github.com/yrelay/yrexpert-js.git
+$ cd /tmp/yrelay/yrexpert-js/docker/gtm
+$ docker build -t yrelay/yrexpert-js-srv:latest .
+$ cd ~ && rm -rf /tmp/yrelay
 ````
 3) Créer un réseau Docker (sauf si déjà créé)
 ````shell
-~$ docker network create yrexpert-js-net
+$ docker network create yrexpert-js-net
 ````
 
 Confirmer qu'il a été créé en répertoriant vos réseaux Docker :
 ````shell
-~$ docker network ls
+$ docker network ls
 ````
 
 Vous devriez voir *yrexpert-js-net* inclus dans la liste en tant que réseau *bridged*.
 
 3) Exécuter le conteneur
 ````shell
-~$ docker run --rm --name yrexpert-js-srv --net yrexpert-js-net -p 50022:22 -p 50080-50083:8080-8083/tcp -it yrelay/yrexpert-js-srv
+$ docker run --rm --name yrexpert-js-srv --net yrexpert-js-net -p 50022:22 -p 50080-50083:8080-8083/tcp -it yrelay/yrexpert-js-srv
 ````
 
 **Notes :**
@@ -89,12 +78,12 @@ Laisser au serveur *yrexpert-js-srv* quelques secondes pour démarrer.
 ## Accès en mode terminal
 Pour vous connecter en tant qu'utilisateur utilisant l'instance *yrelay* (par défaut):
 ````shell
-~$ ssh -p 50022 yrelayutil@localhost # mode de passe = util
+$ ssh -p 50022 yrelayutil@localhost # mode de passe = util
 ````
 
 Pour vous connecter en tant que programmeur utilisant l'instance *yrelay* (par défaut):
 ````shell
-~$ ssh -p 50022 yrelayprog@localhost # mode de passe = prog
+$ ssh -p 50022 yrelayprog@localhost # mode de passe = prog
 ````
 Pour lancer *yrexpert-js* :
 ````
