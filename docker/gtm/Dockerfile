@@ -13,13 +13,13 @@
 # Les instructions simples de construction/fonctionnement sont ci-dessous:
 #
 # Construire:
-# $ docker build -t yrelay/yrexpert-js:latest .
+# $ docker build -t yrelay/yrexpert-js-srv:latest .
 #
 # Utilisation avec la persistance des données:
-# $ docker run --rm -e ydb_chset=utf-8 -v `pwd`/ydb-data:/data -ti yrelay/yrexpert-js:latest
+# $ docker run --rm -e ydb_chset=utf-8 -v `pwd`/ydb-data:/data -ti yrelay/yrexpert-js-srv:latest
 #
 # Accès à l'invite au bash :
-# $ docker run --entrypoint "/bin/bash" -it yrelay/yrexpert-js:latest
+# $ docker run --entrypoint "/bin/bash" -it yrelay/yrexpert-js-srv:latest
 
 # Étape 1: construire yrelay/yrexpert-js depuis l'image YottaDB
 ARG INSTANCE='yrelay'

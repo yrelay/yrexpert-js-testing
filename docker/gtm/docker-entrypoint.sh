@@ -12,7 +12,6 @@ service yrelayyrexpert restart
 service yrelayyrexpert-js restart
 bash
 
-
 # Le nom ou l'identifiant du conteneur docker peut être donné en paramètre
 CONTAINER=$1
 

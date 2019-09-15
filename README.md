@@ -10,13 +10,27 @@
 # Interface Web pour votre système expert...
 Cette arborescence fournit une interface Web et les outils que vous aurez besoin pour votre système expert. Elle est maintenue par [https://www.yrelay.fr/](https://www.yrelay.fr/) et diffusée sous licence libre. Cette version comprend des contributions communautaires libres acceptées par [https://www.yrelay.fr/](https://www.yrelay.fr/).
 
-Disclaimer : YRexpert est encore en développement et son interface peut changer dans les futures versions. Utilisez cette production à vos propres risques.
+**Disclaimer :** YRexpert est encore en développement et son interface peut changer dans les futures versions. Utilisez cette production à vos propres risques.
 
 Ce dépot est fortement inspiré de l'application [EWD.js](http://www.mgateway.com/) de Rob Tweed (Merci).
 
+## Construire et exécuter le conteneur **yrexpert-js-srv**
+0) Préparer le répertoire d'accueil de vos images et vos contenurs Docker (facultatif)
 
-## Chargement et exécution du conteneur **yrexpert-js-srv**
-1) Installer Docker (sauf si déjà installé) :
+Par défaut, Docker utilisara */var/docker* pour installer les conteneurs et les images. Pour ne pas saturer votre répertoire */var* vous pouvez déplacer de réperoire.
+
+A faire avant d'installer Docker. Créer le répertoire de stockage */var/lib/docker* :
+````shell
+$ mkdir /var/lib/docker
+````
+
+Utilisez le montage d'association pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur */opt/docker*, exécutez les commandes suivantes :
+````shell
+$ mkdir /opt/docker
+$ mount --rbind /mnt/docker /var/lib/docker
+````
+
+1) Installer Docker (sauf si déjà installé)
 ````shell
 $ curl -sSL https://get.docker.com | sh
 ````
@@ -28,14 +42,17 @@ $ su - ${USER}
 
 **Note :** Il vous sera demandé de saisir votre mot de passe Linux
 
-2) Charger le conteneur :
+2) Construire le conteneur
 ````shell
-$ docker pull yrelay/yrexpert-js-srv
+$ mkddir /tmp/yrelay
+$ cd /tmp/yrelay
+$ git clone https://github.com/yrelay/yrexpert-js.git
+$ cd /tmp/yrelay/yrexpert-js/docker/gtm
+$ docker build -t yrelay/yrexpert-js-srv:latest .
 ````
-
-3) Créer un réseau Docker (sauf si déjà créé) :
+3) Créer un réseau Docker (sauf si déjà créé)
 ````shell
-$ docker network create yrelay-net
+$ docker network create yrexpert-js-net
 ````
 
 Confirmer qu'il a été créé en répertoriant vos réseaux Docker :
@@ -43,21 +60,24 @@ Confirmer qu'il a été créé en répertoriant vos réseaux Docker :
 $ docker network ls
 ````
 
-Vous devriez voir yrelay-net inclus dans la liste en tant que réseau *bridged*
+Vous devriez voir *yrexpert-js-net* inclus dans la liste en tant que réseau *bridged*.
 
 3) Exécuter le conteneur
 ````shell
-$ docker run -it --rm --name yrexpert-js-srv --net yrexpert-net -e DB_IP=yrexpert-js-db -e DB_PORT=5432 -e DB_USER=yrelay -e DB_PW=DMO -p 2222:22 -p 2280:8080 -p 2281:8081 yrelay/yrexpert-js-srv
+$ docker run --rm --name yrexpert-js-srv --net yrexpert-js-net -p 50022:22 -p 50080:80 -p 50081:8081 -it yrelay/yrexpert-js-srv
 ````
 
 **Notes :**
-- la valeur de la variable d'environnement DB_IP doit correspondre au nom que vous avez spécifié dans la commande *docker run* qui a démarré le conteneur de base de données *yrexpert-db*.
-- les valeurs DB_PORT, DB_USER et DB_PW doivent rester telles que spécifiées ci-dessus.
+- modifiez le port du port d'écoute externe selon vos besoins. Dans l'exemple ci-dessus, vous écouterez sur les port 50022, 50080 et 50081.
+- les ports d'écoute internes 22, 8080 et 8081 **NE DOIVENT PAS** être modifiés.
+- Les ports internes sont réservés de la manière suivante :
+  - 8080 - yrexpert-js
+  - 8081 - yrexpert-term
+  - 8082 - yrexpert-rpc
+  - 8083 - Libre pour test
+  - 22 - Accès SSH à yrelay
 
-- modifiez le port du port d'écoute externe selon vos besoins. Dans l'exemple ci-dessus, vous écouterez sur les port 2222, 2280 et 2281.
-Les ports d'écoute internes **DOIVENT** être 22, 8080 et 8081.
-
-Laisser au serveur *yrexpert-js-srv* quelques secondes pour démarrer. Il devrait alors être connecté au conteneur *yrexpert-js-db et être prêt à être utilisé.
+Laisser au serveur *yrexpert-js-srv* quelques secondes pour démarrer.
 
 ## 1. Contributions communautaires libres dans ce dépôt
 ### 1.1. NVM - Node.js Version Manager
@@ -78,44 +98,8 @@ Laisser au serveur *yrexpert-js-srv* quelques secondes pour démarrer. Il devrai
 ### 1.6. Axiom - Ensemble d'outils de développement
 [Axiom](https://github.com/dlwicksell/axiom) est un ensemble d'outils de développement pour l'édition des routines mumps de GT.M dans l'environnement Vim.
 
-### 1.7. Docker
+### 1.7. Docker - Pour lancer des applications dans des conteneurs logiciels
 [Docker](https://docs.docker.com/) est un logiciel libre permettant facilement de lancer des applications dans des conteneurs logiciels.
-
-Si vous êtes sur un système Linux type Debian, vous pouvez taper :
-
-````shell
-$ sudo apt-get install docker.io containerd.io
-````
-
-Si Docker n'est pas dans les dépôts de votre sources.list : voir les instructions sur https://wiki.debian.org/Docker.
-
-Sinon, VirtualBox peut être téléchargé à partir https://docs.docker.com/install/. L'installation est simple et vous pouvez prendre les valeurs par défaut durant le processus d'installation.
-
-**Nota :** par défaut, Docker utilisara /var/docker pour installer les contenurs et les images. Poour ne pas saturer votre répertoire /var vous pouvez déplacer de réperoire.
-
-Avant d'installer Docker, vous devez préparer le répertoire d'accueil de vos images et vos contenurs : 
-````shell
-# Si vous n'avez installé Docker, exécuter la procédure suivante sans les lignes (*) :
-
-# (*) - Retirez l'ensemble des conteneurs et images Docker.
-$ docker rm -f $(docker ps -aq); docker rmi -f $(docker images -q)
-
-# (*) - Arrêtez le service Docker.
-$ systemctl stop docker
-
-# (*) - Retirez le répertoire de stockage Docker.
-$ rm -rf /var/lib/docker
-
-# Créez un nouveau répertoire de stockage /var/lib/docker.
-$ mkdir /var/lib/docker
-
-# Utilisez le montage d'association pour définir le nouvel emplacement. Par exemple, pour définir le nouvel emplacement sur /mnt/docker, exécutez les commandes suivantes :
-$ mkdir /mnt/docker
-$ mount --rbind /mnt/docker /var/lib/docker
-
-# (*) - Démarrez le service Docker.
-$ systemctl start docker
-````
 
 ## 2. Pour tester, vous pouvez aussi utiliser les box Vagrant
 Pour tester yrexpert-js, vous pouvez installer [yrexpert-box](https://github.com/yrelay/yrexpert-box).
