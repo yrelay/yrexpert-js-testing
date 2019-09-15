@@ -14,7 +14,7 @@ Cette arborescence fournit une interface Web et les outils que vous aurez besoin
 
 Ce dépot est fortement inspiré de l'application [EWD.js](http://www.mgateway.com/) de Rob Tweed (Merci).
 
-## 1. Construire le conteneur **yrexpert-js-srv**
+## 1. Construire le conteneur *yrexpert-js-srv*
 1) Préparer le répertoire d'accueil de vos images et vos contenurs Docker (facultatif)
 
 Par défaut, Docker utilisara */var/lib/docker* pour installer les conteneurs et les images. Pour ne pas saturer votre répertoire */var* vous pouvez déplacer ce réperoire.
@@ -75,9 +75,7 @@ $ docker run --rm --name yrexpert-js-srv --net yrexpert-js-net -p 50022:22 -p 50
 
 Laisser au serveur *yrexpert-js-srv* quelques secondes pour démarrer.
 
-**********************
-
-## 2. Exécuter le conteneur **yrexpert-js-srv**
+## 2. Exécuter le conteneur *yrexpert-js-srv*
 
 ### 2.1. Accès en mode terminal
 Pour vous connecter en tant qu'utilisateur utilisant l'instance *yrelay* (par défaut):
