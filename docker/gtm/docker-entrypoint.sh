@@ -7,11 +7,6 @@
 #!----------------------------------------------------------------------------!
 # docker-entrypoint.sh
 
-service ssh restart
-service yrelayyrexpert restart
-service yrelayyrexpert-js restart
-bash
-
 # Le nom ou l'identifiant du conteneur docker peut être donné en paramètre
 CONTAINER=$1
 
@@ -43,3 +38,8 @@ if [[ "$CONTAINER" == "" ]]; then
   echo 'IP = ' `docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER`
 fi
 echo
+
+service ssh restart
+service yrelayyrexpert restart
+service yrelayyrexpert-js restart
+bash
